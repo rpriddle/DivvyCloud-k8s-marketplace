@@ -1,0 +1,35 @@
+apiVersion: app.k8s.io/v1alpha1
+kind: Application
+metadata:
+  name: divvycloud
+  labels:
+    app.kubernetes.io/name: divvycloud
+    app.kubernetes.io/version: "3"
+spec:
+  selector:
+    matchLabels:
+     app.kubernetes.io/name:  divvycloud
+  componentKinds:
+    - group: core
+      kind: Service
+    - group: apps
+      kind: Deployment
+    - group: apps
+      kind: StatefulSet
+    - group: secrets
+      kind: Secret
+  version: "18.4"
+  description: "DivvyCloud is a compliance and security reporting and enforcement engine for cloud and container infrastructure" 
+  maintainers:
+    - name: DivvyCloud Corp.
+      email: info@divvycloud.com
+  owners:
+    - "DivvyCloud info@divvycloud.com"
+  keywords:
+    - "security"
+    - "compliance"
+    - "tagging"
+    - "automation"
+  links:
+    - description: About
+      url: "https://divvycloud.com/"
