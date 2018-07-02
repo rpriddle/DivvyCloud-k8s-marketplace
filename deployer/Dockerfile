@@ -3,7 +3,12 @@ RUN apt-get update \
     && apt-get install -y --no-install-recommends gettext
 ADD divvycloud-gke /tmp/chart
 RUN ( cd /tmp && tar -czvf /tmp/divvycloud.tar.gz chart)
+
+ADD apptest/deployer/divvycloud /tmp/test/chart
+RUN ( cd /tmp/test && tar -czvf /tmp/test/divvycloud.tar.gz chart)
+
 ADD schema.yaml /tmp/schema.yaml
+ADD apptest/deployer/schema.yaml /tmp/schema-test.yaml
 
 ARG REGISTRY
 ARG TAG
@@ -13,4 +18,6 @@ FROM gcr.io/cloud-marketplace-tools/k8s/deployer_helm
 COPY --from=build /tmp/divvycloud.tar.gz /data/chart
 COPY --from=build /tmp/schema.yaml /data/
 
+COPY --from=build /tmp/test/divvycloud.tar.gz /data-test/chart
+COPY --from=build /tmp/schema-test.yaml /data-test/schema.yaml
 

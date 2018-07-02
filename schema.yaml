@@ -7,7 +7,7 @@ properties:
     type: string
     x-google-marketplace:
       type: NAMESPACE
-  ubuntuImage:
+  imageName:
     type: string
     default: launcher.gcr.io/google/ubuntu16_04:latest
     x-google-marketplace:
@@ -15,4 +15,4 @@ properties:
 required:
 - name
 - namespace
-- ubuntuImage
+- imageName

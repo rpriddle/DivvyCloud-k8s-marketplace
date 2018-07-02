@@ -11,13 +11,27 @@ NAME ?= divvycloud
 $(info ---- APP_DEPLOYER_IMAGE = $(APP_DEPLOYER_IMAGE))
 APP_PARAMETERS ?= { "name" :  "$(NAME)", "namespace": "$(NAMESPACE)","imageName":"$(APP_DEPLOYER_IMAGE)"  }
 
+TESTER_IMAGE ?= $(REGISTRY)/marketplace/tester:$(TAG)
+APP_TEST_PARAMETERS ?= { \
+  "tester.image": "$(TESTER_IMAGE)" \
+}
+
 
 app/build:: .build/divvycloud/deployer \
-		    .build/divvycloud/divvycloud
+		    .build/divvycloud/divvycloud \
+			.build/divvycloud/tester 
 
 .build/divvycloud: | .build
 	$(call print_target, $@)
 	mkdir -p "$@"
+
+.build/divvycloud/tester:
+	$(call print_target, $@)
+	docker pull cosmintitei/bash-curl
+	docker tag cosmintitei/bash-curl "$(TESTER_IMAGE)"
+	docker push "$(TESTER_IMAGE)"
+	@touch "$@"
+
 
 .build/divvycloud/deployer: divvycloud-gke/* divvycloud-gke/templates/* deployer/* .build/marketplace/deployer/helm .build/var/APP_DEPLOYER_IMAGE .build/var/REGISTRY .build/var/TAG | .build/divvycloud
 	$(call print_target, $@)
