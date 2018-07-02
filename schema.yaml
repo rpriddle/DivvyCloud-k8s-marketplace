@@ -9,7 +9,7 @@ properties:
       type: NAMESPACE
   imageName:
     type: string
-    default: launcher.gcr.io/google/ubuntu16_04:latest
+    default: gcr.io/divvy-production/marketplace/divvycloud:latest
     x-google-marketplace:
       type: IMAGE
 required:

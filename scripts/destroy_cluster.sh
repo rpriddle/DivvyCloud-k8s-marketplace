@@ -5,4 +5,4 @@ MACHINE_TYPE=${MACHINE_TYPE:='n1-standard-1'}
 NODE_COUNT=${NODE_COUNT:=3}
 
 # Create the cluster.
-gcloud beta container clusters destroy "$CLUSTER_NAME" 
+gcloud beta container clusters delete "$CLUSTER_NAME" --zone "$ZONE"
