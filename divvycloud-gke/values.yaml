@@ -2,6 +2,9 @@
 # This is a YAML-formatted file.
 # Declare variables to be passed into your templates.
 
+database_password: ch4ng3m3plz!
+database_root_password: ch4ng3m3pr3ttyplz!
+
 harvesters:
   replicaCount: 2
 

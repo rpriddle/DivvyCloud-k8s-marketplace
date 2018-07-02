@@ -58,15 +58,9 @@ spec:
         args:
           - "--ignore-db-dir=lost+found --datadir=/var/lib/mysq/data"
         name: {{ template "divvycloud.name" . }}-mysql
-        env:
-        - name: MYSQL_ROOT_PASSWORD
-          value: divvy
-        - name:  MYSQL_USER
-          value: divvy
-        - name:  MYSQL_PASSWORD
-          value: divvy 
-        - name: MYSQL_DATABASE
-          value: divvy
+        envFrom:
+          - secretRef:
+              name: {{ template "divvycloud.name" . }}-secret           
         ports:
         - containerPort: 3306
     {{ if .Values.storage }}
