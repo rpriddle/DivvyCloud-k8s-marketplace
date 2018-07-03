@@ -61,7 +61,12 @@ app/build:: .build/divvycloud/deployer \
 
 
 
+.PHONY: cluster/create
+ cluster/create:
+	$(call print_target, $0)
+	scripts/create_cluster.sh
 
-
-
-
+.PHONY: cluster/delete
+ cluster/delete:
+	$(call print_target, $0)
+	scripts/destroy_cluster.sh
