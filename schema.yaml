@@ -9,7 +9,7 @@ properties:
       type: NAMESPACE
   imageName:
     type: string
-    default: gcr.io/divvy-public/marketplace/divvycloud:18
+    default: gcr.io/divvycloud-public/marketplace/divvycloud:18
     x-google-marketplace:
       type: IMAGE
 required:
