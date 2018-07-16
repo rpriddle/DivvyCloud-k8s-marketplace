@@ -1,2 +1,6 @@
 service:
   port: 8001
+
+  tester:
+      image: gcr.io/divvycloud-public/marketplace/divvycloud/tester:18
+

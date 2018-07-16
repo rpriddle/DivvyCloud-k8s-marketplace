@@ -4,6 +4,8 @@
 
 database_password: ch4ng3m3plz!
 database_root_password: ch4ng3m3pr3ttyplz!
+image: gcr.io/divvycloud-public/marketplace/divvycloud:18
+pullPolicy: IfNotPresent
 
 harvesters:
   replicaCount: 2
@@ -27,10 +29,6 @@ service:
   type: ClusterIP
   port: 80
 
-image:
-  repository: gcr.io/divvy-production/marketplace/divvycloud
-  tag: latest
-  pullPolicy: IfNotPresent
 
 ingress:
   enabled: true
