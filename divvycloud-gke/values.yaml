@@ -4,7 +4,7 @@
 
 database_password: ch4ng3m3plz!
 database_root_password: ch4ng3m3pr3ttyplz!
-image: gcr.io/cloud-marketplace/divvycloud-public/divvycloud-enterprise
+imageName: gcr.io/cloud-marketplace/divvycloud-public/divvycloud-enterprise
 pullPolicy: IfNotPresent
 
 harvesters:

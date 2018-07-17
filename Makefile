@@ -9,7 +9,7 @@ include marketplace-k8s-app-tools/var.Makefile
 APP_DEPLOYER_IMAGE ?= $(REGISTRY)/marketplace/divvycloud/deployer:$(TAG)
 NAME ?= divvycloud
 $(info ---- APP_DEPLOYER_IMAGE = $(APP_DEPLOYER_IMAGE))
-APP_PARAMETERS ?= { "name" :  "$(NAME)", "namespace": "$(NAMESPACE)","image": "$(REGISTRY)/marketplace/divvycloud:$(TAG)" }
+APP_PARAMETERS ?= { "name" :  "$(NAME)", "namespace": "$(NAMESPACE)","imageName": "$(REGISTRY)/marketplace/divvycloud:$(TAG)" }
 
 TESTER_IMAGE ?= $(REGISTRY)/marketplace/divvycloud/tester:$(TAG)
 APP_TEST_PARAMETERS ?= { \

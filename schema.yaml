@@ -15,4 +15,4 @@ properties:
 required:
 - name
 - namespace
-- image
+- imageName
