@@ -41,7 +41,7 @@ spec:
     spec:
       containers:
         - name: {{ .Chart.Name }}
-          image: {{ .Values.image }}
+          image: {{ .Values.imageName }}
           imagePullPolicy: {{ .Values.pullPolicy }}
           args: ['divvyinterfaceserver','-n']
           livenessProbe:
