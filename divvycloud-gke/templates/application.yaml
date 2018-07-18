@@ -37,7 +37,7 @@ spec:
       ```
       SERVICE_IP=$(kubectl get \
         --namespace {{ .Release.Namespace }} \
-        svc {{ .Release.Name }}-interfaceserver \
+        svc {{ template "divvycloud.name" . }}-interfaceserver \
         -o jsonpath='{.status.loadBalancer.ingress[0].ip}')
 
       echo "http://${SERVICE_IP}:8001"
