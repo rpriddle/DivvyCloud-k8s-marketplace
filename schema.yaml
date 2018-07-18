@@ -1,3 +1,4 @@
+application_api_version: v1beta1
 properties:
   name:
     type: string
@@ -12,6 +13,10 @@ properties:
     default: gcr.io/divvycloud-public/marketplace/divvycloud:18
     x-google-marketplace:
       type: IMAGE
+
+
+
+
 required:
 - name
 - namespace

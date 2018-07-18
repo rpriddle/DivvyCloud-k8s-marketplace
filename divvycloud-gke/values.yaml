@@ -20,7 +20,7 @@ processor:
   replicaCount: 2
 
 longharvester:
-  replicaCount: 2
+  replicaCount: 1
 
 ondemand:
   replicaCount: 2
@@ -40,6 +40,9 @@ ingress:
   path: /
   hosts:
     - crosskube.divvycloud.io
+
+storage:
+  size: 30Gi
 
 resources: {}
   # We usually recommend not to specify default resources and to leave this as a conscious
