@@ -15,12 +15,26 @@ spec:
     type: DivvyCloud
     version: '18.4'
     description: |-
+    
       DivvyCloud is a compliance and security reporting and enforcement engine for cloud and container infrastructure
 
+      # Pricing
+      DivvyCloud Enterprise is free to deploy to your Kubernetes cluster, but requires you to purchase a license from DivvyCloud directly.
 
       # Support
-      Enterprise support is available via support@divvycloud.com
+      DivvyCloud provides enterprise grade support to our customers which includes:
+         - 24x7 Support. DivvyCloud provides telephone support, online documentation, and an email/web-based solution for submitting support tickets.
+         - Dedicated Technical Account Manager. DivvyCloud provides a dedicated Technical Account Manager (TAM).  The TAM’s goal is to deliver a great experience and maximize your return on investment.  
+           Example TAM roles and responsibilities include:
+           - Designated liaison and client advocate for all customer-related issues.
+           - High-level planning and ongoing guidance to ensure deployment success.
+           - Proactive notification of updates and upgrades.
+           - Escalation and proactive follow-up on key support issues.
+           - Grow the knowledge base of your team.
+           - Coordinate activities across complex organizations.
+
       Additional support is available via our [Support Documentation ](http://docs.divvycloud.com/latest/installation.html)
+
     maintainers:
     - name: DivvyCloud
       url: http://www.divvycloud.com
