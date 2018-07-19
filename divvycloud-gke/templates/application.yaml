@@ -23,15 +23,10 @@ spec:
 
       # Support
       DivvyCloud provides enterprise grade support to our customers which includes:
-         - 24x7 Support. DivvyCloud provides telephone support, online documentation, and an email/web-based solution for submitting support tickets.
-         - Dedicated Technical Account Manager. DivvyCloud provides a dedicated Technical Account Manager (TAM).  The TAM’s goal is to deliver a great experience and maximize your return on investment.  
-           Example TAM roles and responsibilities include:
-           - Designated liaison and client advocate for all customer-related issues.
-           - High-level planning and ongoing guidance to ensure deployment success.
-           - Proactive notification of updates and upgrades.
-           - Escalation and proactive follow-up on key support issues.
-           - Grow the knowledge base of your team.
-           - Coordinate activities across complex organizations.
+      
+      24x7 Support. DivvyCloud provides telephone support, online documentation, and an email/web-based solution for submitting support tickets.
+
+      Dedicated Technical Account Manager. DivvyCloud provides a dedicated Technical Account Manager (TAM).  The TAM’s goal is to deliver a great experience and maximize your return on investment.  
 
       Additional support is available via our [Support Documentation ](http://docs.divvycloud.com/latest/installation.html)
 
@@ -56,12 +51,30 @@ spec:
 
       echo "http://${SERVICE_IP}:8001"
       ```
-      Note that it might take some time for the external IP to be provisioned.
 
       # Setting up admin user
 
       Once the software is deployed please goto the above ip address in a browser and configure
       your admin account
+  info:
+  - name: MySQL root password
+    type: Reference
+    valueFrom:
+      secretKeyRef:
+        key: MYSQL_ROOT_PASSWORD
+        name: {{ template "divvycloud.name" . }}-secret 
+  - name: DivvyCloud MySQL user name
+    type: Reference
+    valueFrom:
+      secretKeyRef:
+        key: MYSQL_USER
+        name: {{ template "divvycloud.name" . }}-secret 
+  - name: DivvyCloud MySQL password
+    type: Reference
+    valueFrom:
+      secretKeyRef:
+        key: MYSQL_PASSWORD
+        name: {{ template "divvycloud.name" . }}-secret 
 
   selector:
     matchLabels:

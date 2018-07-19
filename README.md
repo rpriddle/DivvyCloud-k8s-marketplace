@@ -89,20 +89,40 @@ kubectl apply -f expanded.yaml
 ```
 
 
-# Backup / Restore
+## Backup / Restore
 
 	MySQL dump and the MySQL client are used to backlup and restore a DivvyCloud database
 	First you need to get the IP address of the mysql service in your k8s deployment 
 
 	'''
       MYSQL_IP=$(kubectl get \
-        --namespace {{ .Release.Namespace }} \
+        --namespace default \
         svc divvycloud-mysql\
-        -o jsonpath='{.status.loadBalancer.ingress[0].ip}')
+        -o jsonpath='{.spec.clusterIP})
 
 	'''
 
+	Next use the username and password
+	```
+	kubectl get secret divvycloud-secret -o jsonpath={'.data.DIVVY_MYSQL_USER'}  | base64 -D
+	kubectl get secret divvycloud-secret -o jsonpath={'.data.DIVVY_MYSQL_PASSWORD'}  | base64 -D
+	```
 
-# Upgrades
+	Finally to backup a database:
+	```
+	mysqldump -u [MYSQL_USER] -p -h [MYSQL_IP] divvy > divvy.sql
+	mysqldump -u [MYSQL_USER] -p -h [MYSQL_IP] divvykeys > divvykeys.sql
+	```
 
-*TODO: instructions for upgrades*
+	To restore a database:
+
+	```
+	mysql -u [MYSQL_USER] -p -h [MYSQL_IP] divvy < divvy.sql
+	mysql -u [MYSQL_USER] -p -h [MYSQL_IP] divvykeys < divvykeys.sql
+	```
+
+## Upgrades
+
+ Simply restart all containers , the latest image will pull automatically. Upgrade of database occures on boot.
+ Please backup your database prior to upgrading
+
