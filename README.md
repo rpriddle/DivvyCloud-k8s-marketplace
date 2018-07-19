@@ -94,14 +94,14 @@ kubectl apply -f expanded.yaml
 	MySQL dump and the MySQL client are used to backlup and restore a DivvyCloud database
 	First you need to get the IP address of the mysql service in your k8s deployment 
 
-	'''
+	```
       MYSQL_IP=$(kubectl get \
         --namespace default \
         svc divvycloud-mysql\
         -o jsonpath='{.spec.clusterIP})
 
-	'''
-
+    ```
+    
 	Next use the username and password
 	```
 	kubectl get secret divvycloud-secret -o jsonpath={'.data.DIVVY_MYSQL_USER'}  | base64 -D
