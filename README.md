@@ -91,35 +91,35 @@ kubectl apply -f expanded.yaml
 
 ## Backup / Restore
 
-	MySQL dump and the MySQL client are used to backlup and restore a DivvyCloud database
-	First you need to get the IP address of the mysql service in your k8s deployment 
+MySQL dump and the MySQL client are used to backlup and restore a DivvyCloud database
+First you need to get the IP address of the mysql service in your k8s deployment 
 
-	```
-      MYSQL_IP=$(kubectl get \
-        --namespace default \
-        svc divvycloud-mysql\
-        -o jsonpath='{.spec.clusterIP})
+```
+  MYSQL_IP=$(kubectl get \
+    --namespace default \
+    svc divvycloud-mysql\
+    -o jsonpath='{.spec.clusterIP})
 
-    ```
-    
-	Next use the username and password
-	```
-	kubectl get secret divvycloud-secret -o jsonpath={'.data.DIVVY_MYSQL_USER'}  | base64 -D
-	kubectl get secret divvycloud-secret -o jsonpath={'.data.DIVVY_MYSQL_PASSWORD'}  | base64 -D
-	```
+```
 
-	Finally to backup a database:
-	```
-	mysqldump -u [MYSQL_USER] -p -h [MYSQL_IP] divvy > divvy.sql
-	mysqldump -u [MYSQL_USER] -p -h [MYSQL_IP] divvykeys > divvykeys.sql
-	```
+Next use the username and password
+```
+kubectl get secret divvycloud-secret -o jsonpath={'.data.DIVVY_MYSQL_USER'}  | base64 -D
+kubectl get secret divvycloud-secret -o jsonpath={'.data.DIVVY_MYSQL_PASSWORD'}  | base64 -D
+```
 
-	To restore a database:
+Finally to backup a database:
+```
+mysqldump -u [MYSQL_USER] -p -h [MYSQL_IP] divvy > divvy.sql
+mysqldump -u [MYSQL_USER] -p -h [MYSQL_IP] divvykeys > divvykeys.sql
+```
 
-	```
-	mysql -u [MYSQL_USER] -p -h [MYSQL_IP] divvy < divvy.sql
-	mysql -u [MYSQL_USER] -p -h [MYSQL_IP] divvykeys < divvykeys.sql
-	```
+To restore a database:
+
+```
+mysql -u [MYSQL_USER] -p -h [MYSQL_IP] divvy < divvy.sql
+mysql -u [MYSQL_USER] -p -h [MYSQL_IP] divvykeys < divvykeys.sql
+```
 
 ## Upgrades
 
