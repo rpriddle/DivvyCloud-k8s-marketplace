@@ -15,7 +15,7 @@ instructions:
 
 ## Acquiring and installing License 
 
-	DivvyCloud automatically generates and installs a 14-day trial license.
+DivvyCloud automatically generates and installs a 14-day trial license.
 
 ## Tool dependencies
 
@@ -88,6 +88,16 @@ Run kubectl:
 kubectl apply -f expanded.yaml
 ```
 
+## Connecting to admin console
+
+By default DivvyCloud is only accessible from inside the kube cluster. As a result we must setup a port forward
+
+```
+kubectl port-forward svc/divvycloud-interfaceserver 8001
+
+```
+
+Next open http://localhost:8001/ in your web browser
 
 ## Backup / Restore
 

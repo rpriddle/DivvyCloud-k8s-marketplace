@@ -35,7 +35,7 @@ spec:
       url: http://www.divvycloud.com
     links:
     - description: Getting Started
-      url: http://docs.divvycloud.com/latest/index.html
+      url: https://github.com/DivvyCloud/DivvyCloud-k8s-marketplace
     notes: |-
       # Expose DivvyCloud service
 
