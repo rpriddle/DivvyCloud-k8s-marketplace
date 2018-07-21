@@ -8,7 +8,7 @@ metadata:
     release: {{ .Release.Name }}
     heritage: {{ .Release.Service }}
 spec:
-  type: ClusterIP
+  type: {{ if (.Values.ingress.enabled) and eq .Values.ingress.enabled "true" }} nodePort {{ else }} clusterIP {{ end }}
   ports:
     - port: {{ .Values.interfaceserver_port | default "8001" }}
   selector:
